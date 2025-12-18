@@ -1,0 +1,64 @@
+:root {
+    --color-white: #FFFFFF;
+    --color-grey: #949494;
+    --color-blue-800: #242742;
+    --color-blue-700: #36384d;
+    --color-red: #ff6155;
+    --gradient-red: linear-gradient(90deg, #FF6A3A, #FF527B);
+    --spacing-100: 0.5rem;
+    --spacing-200: 1rem;
+    --spacing-300: 1.5rem;
+    --spacing-400: 2rem;
+    --spacing-500: 2.5rem;
+    --spacing-600: 3rem;
+    --spacing-800: 4rem;
+    --spacing-900: 4.5rem;
+    --spacing-1300: 6.5rem;
+}
+
+/* Grundlegende Font-Definition (sicherstellen, dass Roboto geladen ist) */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- Text Preset 1 --- */
+/* Kombiniert Desktop & Mobile Version */
+.text-preset-1 {
+  font-weight: 700; /* Bold */
+  line-height: 1.0; /* 100% */
+  letter-spacing: 0px;
+  
+  /* Mobile Standard (40px) */
+  font-size: 40px;
+}
+
+/* Ab Tablet/Desktop auf 56px vergrößern */
+@media (min-width: 768px) {
+  .text-preset-1 {
+    font-size: 56px;
+  }
+}
+
+/* --- Text Preset 2 (Bold) --- */
+.text-preset-2-bold {
+  font-weight: 700; /* Bold */
+  font-size: 16px;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0px;
+}
+
+/* --- Text Preset 2 (Regular) --- */
+.text-preset-2-regular {
+  font-weight: 400; /* Regular */
+  font-size: 16px;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0px;
+}
+
+/* --- Text Preset 3 --- */
+.text-preset-3 {
+  font-weight: 700; /* Bold */
+  font-size: 12px;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0px;
+}
