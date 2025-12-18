@@ -1,64 +1,279 @@
 :root {
-    --color-white: #FFFFFF;
-    --color-grey: #949494;
-    --color-blue-800: #242742;
-    --color-blue-700: #36384d;
-    --color-red: #ff6155;
-    --gradient-red: linear-gradient(90deg, #FF6A3A, #FF527B);
-    --spacing-100: 0.5rem;
-    --spacing-200: 1rem;
-    --spacing-300: 1.5rem;
-    --spacing-400: 2rem;
-    --spacing-500: 2.5rem;
-    --spacing-600: 3rem;
-    --spacing-800: 4rem;
-    --spacing-900: 4.5rem;
-    --spacing-1300: 6.5rem;
+    --color-white: hsl(0, 0%, 100%);
+    --color-grey: hsl(231, 7%, 60%);
+    --color-charcoal-grey: hsl(235, 18%, 26%);
+    --color-dark-slate-grey: hsl(234, 29%, 20%);
+    --color-tomato: hsl(4, 100%, 67%);
+    --color-tomato-light: hsla(4, 100%, 67%, 0.15);
+
+    --font-roboto: 'Roboto', sans-serif;
 }
 
-/* Grundlegende Font-Definition (sicherstellen, dass Roboto geladen ist) */
+/* Reset and Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+    font-family: var(--font-roboto);
+    background-color: var(--color-charcoal-grey);
+    color: var(--color-dark-slate-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* --- Text Preset 1 --- */
-/* Kombiniert Desktop & Mobile Version */
+.hidden {
+    display: none !important;
+}
+
+/* Typography */
+h1 {
+    color: var(--color-dark-slate-grey);
+    margin-bottom: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
 .text-preset-1 {
-  font-weight: 700; /* Bold */
-  line-height: 1.0; /* 100% */
-  letter-spacing: 0px;
-  
-  /* Mobile Standard (40px) */
-  font-size: 40px;
+    font-weight: 700;
+    font-size: 2.5rem; /* 40px */
+    line-height: 1;
 }
 
-/* Ab Tablet/Desktop auf 56px vergrößern */
-@media (min-width: 768px) {
-  .text-preset-1 {
-    font-size: 56px;
-  }
+@media (min-width: 900px) {
+    .text-preset-1 {
+        font-size: 3.5rem; /* 56px */
+    }
 }
 
-/* --- Text Preset 2 (Bold) --- */
 .text-preset-2-bold {
-  font-weight: 700; /* Bold */
-  font-size: 16px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-/* --- Text Preset 2 (Regular) --- */
 .text-preset-2-regular {
-  font-weight: 400; /* Regular */
-  font-size: 16px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-/* --- Text Preset 3 --- */
 .text-preset-3 {
-  font-weight: 700; /* Bold */
-  font-size: 12px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+/* Signup Card */
+.signup-card {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 375px;
+    height: 100vh; /* Full screen on mobile */
+}
+
+.card-content {
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Benefits List */
+.benefits-list {
+    list-style: none;
+    margin-bottom: 2.5rem;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.625rem;
+}
+
+.benefits-list li::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background-image: url('../images/icon-list.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    color: var(--color-dark-slate-grey);
+}
+
+.error-message {
+    color: var(--color-tomato);
+    display: none; /* Hidden by default */
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-grey);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--color-dark-slate-grey);
+    cursor: pointer;
+}
+
+input[type="email"]:focus {
+    border-color: var(--color-dark-slate-grey);
+}
+
+/* Error State */
+input[type="email"].error {
+    border-color: var(--color-tomato);
+    background-color: var(--color-tomato-light);
+    color: var(--color-tomato);
+}
+
+input[type="email"].error::placeholder {
+    color: var(--color-tomato);
+}
+
+/* Button Styles */
+.main-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-dark-slate-grey);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.main-button:hover {
+    background: linear-gradient(to bottom, hsl(234, 29%, 20%), hsl(4, 100%, 67%)); /* Gradient hover effect per common practice or just plain color */
+    background-color: var(--color-tomato); /* Simple hover */
+    box-shadow: 0 10px 20px rgba(255, 97, 85, 0.5); /* Add shadow for better effect */
+}
+
+/* Success Card */
+.success-card {
+    max-width: 375px;
+    height: 100vh; /* Full screen mobile */
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10vh; /* Push content down a bit on mobile */
+}
+
+.success-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.success-img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 2.5rem;
+}
+
+.success-card h1 {
+    margin-bottom: 1.5rem;
+}
+
+.success-card p {
+    margin-bottom: auto; /* Push button to bottom */
+}
+
+#user-email {
+    font-weight: 700;
+}
+
+.success-card button {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Desktop Responsive Styles */
+@media (min-width: 900px) {
+    .signup-card {
+        flex-direction: row;
+        max-width: 928px;
+        height: auto;
+        border-radius: 2.25rem;
+        padding: 1.5rem;
+        align-items: center;
+    }
+
+    .card-content {
+        padding: 3.5rem; /* More padding on desktop */
+        flex: 1;
+    }
+
+    .card-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .card-image img {
+        border-radius: 1rem; /* Rounded corners for image on desktop only if needed, but illustration might fit container */
+        height: 100%; /* Ensure full height of container */
+        width: auto;
+        max-width: 100%;
+    }
+
+    .success-card {
+        max-width: 504px;
+        height: auto;
+        border-radius: 2.25rem;
+        padding: 3rem 4rem;
+        padding-top: 3rem; /* Reset padding top */
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    }
+
+    .success-content {
+        height: auto;
+    }
+
+    .success-card p {
+        margin-bottom: 2.5rem;
+    }
+
+    .success-card button {
+        margin-bottom: 0;
+    }
 }
