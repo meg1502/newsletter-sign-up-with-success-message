@@ -4,7 +4,9 @@
     --color-blue-800: #242742;
     --color-blue-700: #36384d;
     --color-red: #ff6155;
+    --color-red-light: rgba(255, 97, 85, 0.15); /* Derived for error state */
     --gradient-red: linear-gradient(90deg, #FF6A3A, #FF527B);
+
     --spacing-100: 0.5rem;
     --spacing-200: 1rem;
     --spacing-300: 1.5rem;
@@ -14,51 +16,274 @@
     --spacing-800: 4rem;
     --spacing-900: 4.5rem;
     --spacing-1300: 6.5rem;
+
+    --font-roboto: 'Roboto', sans-serif;
 }
 
-/* Grundlegende Font-Definition (sicherstellen, dass Roboto geladen ist) */
+/* Reset and Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+    font-family: var(--font-roboto);
+    background-color: var(--color-blue-700);
+    color: var(--color-blue-800);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* --- Text Preset 1 --- */
-/* Kombiniert Desktop & Mobile Version */
+.hidden {
+    display: none !important;
+}
+
+/* Typography */
+h1 {
+    color: var(--color-blue-800);
+    margin-bottom: var(--spacing-300);
+}
+
+p {
+    margin-bottom: var(--spacing-300);
+}
+
 .text-preset-1 {
-  font-weight: 700; /* Bold */
-  line-height: 1.0; /* 100% */
-  letter-spacing: 0px;
-  
-  /* Mobile Standard (40px) */
-  font-size: 40px;
+    font-weight: 700;
+    font-size: 2.5rem; /* 40px */
+    line-height: 1;
 }
 
-/* Ab Tablet/Desktop auf 56px vergrößern */
-@media (min-width: 768px) {
-  .text-preset-1 {
-    font-size: 56px;
-  }
+@media (min-width: 900px) {
+    .text-preset-1 {
+        font-size: 3.5rem; /* 56px */
+    }
 }
 
-/* --- Text Preset 2 (Bold) --- */
 .text-preset-2-bold {
-  font-weight: 700; /* Bold */
-  font-size: 16px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-/* --- Text Preset 2 (Regular) --- */
 .text-preset-2-regular {
-  font-weight: 400; /* Regular */
-  font-size: 16px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
-/* --- Text Preset 3 --- */
 .text-preset-3 {
-  font-weight: 700; /* Bold */
-  font-size: 12px;
-  line-height: 1.5; /* 150% */
-  letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+/* Signup Card */
+.signup-card {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 375px;
+    height: 100vh; /* Full screen on mobile */
+}
+
+.card-content {
+    padding: var(--spacing-500) var(--spacing-300);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Benefits List */
+.benefits-list {
+    list-style: none;
+    margin-bottom: var(--spacing-500);
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.625rem;
+}
+
+.benefits-list li::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background-image: url('../images/icon-list.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: var(--spacing-200);
+    flex-shrink: 0;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: var(--spacing-300);
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-100);
+}
+
+label {
+    display: block;
+    color: var(--color-blue-800);
+}
+
+.error-message {
+    color: var(--color-red);
+    display: none; /* Hidden by default */
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: var(--spacing-200);
+    border: 1px solid var(--color-grey);
+    border-radius: var(--spacing-100);
+    outline: none;
+    color: var(--color-blue-800);
+    cursor: pointer;
+}
+
+input[type="email"]:focus {
+    border-color: var(--color-blue-800);
+}
+
+/* Error State */
+input[type="email"].error {
+    border-color: var(--color-red);
+    background-color: var(--color-red-light);
+    color: var(--color-red);
+}
+
+input[type="email"].error::placeholder {
+    color: var(--color-red);
+}
+
+/* Button Styles */
+.main-button {
+    width: 100%;
+    padding: var(--spacing-200);
+    background-color: var(--color-blue-800);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--spacing-100);
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-button:hover {
+    background: var(--gradient-red);
+    box-shadow: 0 10px 20px rgba(255, 97, 85, 0.5);
+}
+
+/* Success Card */
+.success-card {
+    max-width: 375px;
+    height: 100vh; /* Full screen mobile */
+    padding: var(--spacing-500) var(--spacing-300);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10vh; /* Push content down a bit on mobile */
+}
+
+.success-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.success-img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--spacing-500);
+}
+
+.success-card h1 {
+    margin-bottom: var(--spacing-300);
+}
+
+.success-card p {
+    margin-bottom: auto; /* Push button to bottom */
+}
+
+#user-email {
+    font-weight: 700;
+}
+
+.success-card button {
+    margin-top: var(--spacing-300);
+    margin-bottom: var(--spacing-400);
+}
+
+
+/* Desktop Responsive Styles */
+@media (min-width: 900px) {
+    .signup-card {
+        flex-direction: row;
+        max-width: 928px;
+        height: auto;
+        border-radius: 2.25rem;
+        padding: var(--spacing-300);
+        align-items: center;
+    }
+
+    .card-content {
+        padding: 3.5rem; /* More padding on desktop */
+        flex: 1;
+    }
+
+    .card-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .card-image img {
+        border-radius: var(--spacing-200); /* 1rem */
+        height: 100%; /* Ensure full height of container */
+        width: auto;
+        max-width: 100%;
+    }
+
+    .success-card {
+        max-width: 504px;
+        height: auto;
+        border-radius: 2.25rem;
+        padding: var(--spacing-600) var(--spacing-800);
+        padding-top: var(--spacing-600);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    }
+
+    .success-content {
+        height: auto;
+    }
+
+    .success-card p {
+        margin-bottom: var(--spacing-500);
+    }
+
+    .success-card button {
+        margin-bottom: 0;
+    }
 }

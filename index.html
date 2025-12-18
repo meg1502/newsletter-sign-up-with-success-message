@@ -8,50 +8,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles/main.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <script src="./assets/scripts/main.js"></script>
-  <title>Newsletter sign-up</title>
+  <script src="./assets/scripts/main.js" defer></script>
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
 
   </head>
 <body>
 
   <!-- Sign-up form start -->
   <main class="card signup-card">
-    <h1>Stay updated!</h1>
-    <p>
-    Join 60,000+ product managers receiving monthly updates on:
-    </p>
-    <ul class="benefits-list">
-      <li>Product discovery and building what matters</li>
-      <li>Measuring to ensure updates are a success</li>
-      <li>And much more!</li>
-    </ul>
-    <section class="mail-section">
-      <label>Email address</label>
-      <input type="email" id="mail" name="mail" required placeholder="email@company.com">
-    </section>
+    <div class="card-content">
+      <h1 class="text-preset-1">Stay updated!</h1>
+      <p class="text-preset-2-regular">
+      Join 60,000+ product managers receiving monthly updates on:
+      </p>
+      <ul class="benefits-list text-preset-2-regular">
+        <li>Product discovery and building what matters</li>
+        <li>Measuring to ensure updates are a success</li>
+        <li>And much more!</li>
+      </ul>
+
+      <form id="signup-form" novalidate>
+        <div class="form-group">
+          <div class="label-row">
+            <label for="mail" class="text-preset-3">Email address</label>
+            <span class="error-message text-preset-3">Valid email required</span>
+          </div>
+          <input type="email" id="mail" name="mail" placeholder="email@company.com" class="text-preset-2-regular">
+        </div>
+
+        <button type="submit" id="btn-subscribe" class="main-button text-preset-2-bold">
+          Subscribe to monthly Newsletter
+        </button>
+      </form>
+    </div>
     
-    <button id="btn-subscribe" class="main-button ">
-      Subscribe to monthly Newsletter
-    </button>
+    <div class="card-image">
+      <picture>
+        <source media="(min-width: 900px)" srcset="./assets/images/illustration-sign-up-desktop.svg">
+        <img src="./assets/images/illustration-sign-up-mobile.svg" alt="Sign up illustration">
+      </picture>
+    </div>
   </main>
 
-  <main class="card success-card">
-
+  <main class="card success-card hidden">
+    <div class="success-content">
       <img class="success-img" alt="success" src="./assets/images/icon-success.svg">
 
-      <h1>
+      <h1 class="text-preset-1">
         Thanks for subscribing!
       </h1>
-      <p>
-        A confirmation email has been sent to |placeholder|.
+      <p class="text-preset-2-regular">
+        A confirmation email has been sent to <span id="user-email">ash@loremcompany.com</span>.
         Please open it and click the button inside to confirm your subscription.
       </p>
-      <button id="btn-dismiss" class="main-button">
+      <button id="btn-dismiss" class="main-button text-preset-2-bold">
         Dismiss message
       </button>
+    </div>
   </main>
 
-  
-  
 </body>
 </html>
